@@ -1,0 +1,73 @@
+/* EquipmentCard.module.css */
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 1rem;
+}
+.cardBottomLine {
+  width: 100%;
+  height: 3px;
+  background: #efefef;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+.equipmentName {
+  font-size: 2rem;
+  color: #ffffff;
+    margin-bottom: -1rem;
+}
+.stateRed {
+    background: rgba(255, 255, 255, 0);
+  color: #ef4444;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+.stateYellow {
+    background: rgba(255, 255, 255, 0);
+  color: #f59e42;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+.stateGreen {
+  background: rgba(255, 255, 255, 0);
+  color: #22c55e;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+    font-size: 1.25rem;
+}
+.stateText {
+    font-size: 1.25rem;
+  font-weight: 700;
+}
+.lastUpdated {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.buttonRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.viewHistoryBtn {
+  color: #2563eb;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem;
+}
+.viewHistoryBtn:hover {
+  color: #1e40af;
+}

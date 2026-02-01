@@ -1,0 +1,1 @@
+export type EquipmentState = 'RED' | 'YELLOW' | 'GREEN';
