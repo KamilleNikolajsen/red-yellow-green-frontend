@@ -25,7 +25,7 @@
 - The frontend expects a backend API and SignalR server running on [http://localhost:5000](http://localhost:5000).
 
 #### CORS Configuration
-- The backend allows requests from any frontend (any origin).
+- The backend allows requests from the frontend at [http://localhost:5173](http://localhost:5173).
 
 ## Project Structure
 - `src/` contains all source code
