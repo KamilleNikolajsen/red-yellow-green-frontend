@@ -1,4 +1,4 @@
-import styles from './Styling/StateChangeButton.module.css';
+import styles from './styling/StateChangeButton.module.css';
 import type {EquipmentState} from "../types/EquipmentState.ts";
 
 interface StateChangeButtonProps {
@@ -15,6 +15,12 @@ const stateColors: Record<EquipmentState, string> = {
     GREEN: styles.green,
 };
 
+const stateLabels: Record<EquipmentState, string> = {
+    RED: 'Standing still',
+    YELLOW: 'Starting up/Winding down',
+    GREEN: 'Producing normally',
+};
+
 export function StateChangeButton({ state, currentState, onClick, disabled, className }: StateChangeButtonProps) {
     const isActive = state === currentState;
 
@@ -29,7 +35,7 @@ export function StateChangeButton({ state, currentState, onClick, disabled, clas
                 className || ''
             ].join(' ')}
         >
-            {state}
+            {stateLabels[state]}
         </button>
     );
 }

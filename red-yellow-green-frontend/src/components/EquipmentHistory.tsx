@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import type {StateHistory} from "../types/StateHistory.ts";
 import {equipmentApi} from "../services/api.ts";
-import styles from './Styling/EquipmentHistory.module.css';
-import {EquipmentHistoryCard} from "./EquipmentHistoryCard";
+import styles from './styling/EquipmentHistory.module.css';
+import {EquipmentHistoryCard} from "./cards/EquipmentHistoryCard.tsx";
 
 interface EquipmentHistoryProps {
     equipmentId: string;
