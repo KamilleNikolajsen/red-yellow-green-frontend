@@ -1,6 +1,6 @@
 import * as signalR from '@microsoft/signalr';
 
-const HUB_URL = 'http://localhost:5000/hubs/states';
+const HUB_URL = 'http://localhost:5001/hubs/states';
 
 class SignalService {
 
