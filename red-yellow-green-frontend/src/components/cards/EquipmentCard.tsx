@@ -1,9 +1,9 @@
-import type {Equipment} from "../types/Equipment.ts";
-import type {EquipmentState} from "../types/EquipmentState.ts";
+import type {Equipment} from "../../types/Equipment.ts";
+import type {EquipmentState} from "../../types/EquipmentState.ts";
 import {useState} from "react";
-import {equipmentApi} from "../services/api.ts";
-import {StateChangeButton} from "./StateChangeButton.tsx";
-import styles from './Styling/EquipmentCard.module.css';
+import {equipmentApi} from "../../services/api.ts";
+import {StateChangeButton} from "../StateChangeButton.tsx";
+import styles from '../styling/EquipmentCard.module.css';
 
 interface EquipmentCardProps {
     equipment: Equipment;
@@ -15,6 +15,12 @@ const stateColors: Record<EquipmentState, string> = {
     RED: styles.stateRed,
     YELLOW: styles.stateYellow,
     GREEN: styles.stateGreen,
+};
+
+const stateLabels: Record<EquipmentState, string> = {
+    RED: 'Standing still',
+    YELLOW: 'Starting up/Winding down',
+    GREEN: 'Producing normally',
 };
 
 export function EquipmentCard({ equipment, onStateChanged, onViewHistory }: EquipmentCardProps) {
@@ -39,21 +45,20 @@ export function EquipmentCard({ equipment, onStateChanged, onViewHistory }: Equi
         }
     };
 
-    // Defensive: handle missing/invalid lastUpdatedUtc
+    // Handle missing/invalid lastUpdated
     let lastUpdate = 'Unknown';
     if (equipment.lastStateChange) {
         const parsedDate = new Date(equipment.lastStateChange);
         lastUpdate = isNaN(parsedDate.getTime()) ? 'Unknown' : parsedDate.toLocaleString();
     }
-    console.log('lastUpdatedUtc:', equipment.lastStateChange);
-    console.log('equipment:', equipment);
+
     return (
         <div className={styles.cardInner}>
             <h2 className={styles.equipmentName}>{equipment.name}</h2>
             <div className={styles.stateText}>
                 State:
                 <span className={stateColors[(equipment.currentState as string).toUpperCase() as EquipmentState] || styles.stateRed}>
-                  {equipment.currentState}
+                  {stateLabels[(equipment.currentState as string).toUpperCase() as EquipmentState]}
                 </span>
             </div>
             <p className={styles.lastUpdated}>
@@ -62,7 +67,6 @@ export function EquipmentCard({ equipment, onStateChanged, onViewHistory }: Equi
             <p >
                 Change State To:
             </p>
-
             <div className={styles.buttonRow}>
                 <StateChangeButton
                     state="RED"

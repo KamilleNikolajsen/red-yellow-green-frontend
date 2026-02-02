@@ -3,13 +3,12 @@ import type {Equipment} from "../types/Equipment.ts";
 import {signalService} from "../services/signalService.ts";
 import {equipmentApi} from "../services/api.ts";
 import {EquipmentHistory} from "./EquipmentHistory.tsx";
-import {EquipmentCard} from "./EquipmentCard.tsx";
+import {EquipmentCard} from "./cards/EquipmentCard.tsx";
 
 export function EquipmentOverviewPage(){
     const [equipments, setEquipments] = useState<Equipment[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [_selectedEquipmentId, setSelectedEquipmentId] = useState<string | null>(null);
-
+    const [selectedEquipmentId, setSelectedEquipmentId] = useState<string | null>(null);
 
     useEffect(() => {
         loadEquipments();
@@ -38,7 +37,7 @@ export function EquipmentOverviewPage(){
         });
     };
 
-    const selectedEquipment = equipments.find(e => e.id === _selectedEquipmentId);
+    const selectedEquipment = equipments.find(e => e.id === selectedEquipmentId);
 
     return (
         <div>
@@ -57,9 +56,9 @@ export function EquipmentOverviewPage(){
                     ))}
                 </ul>
             )}
-            {_selectedEquipmentId && selectedEquipment && (
+            {selectedEquipmentId && selectedEquipment && (
                 <EquipmentHistory
-                    equipmentId={_selectedEquipmentId}
+                    equipmentId={selectedEquipmentId}
                     equipmentName={selectedEquipment.name}
                     onClose={() => setSelectedEquipmentId(null)}
                 />
